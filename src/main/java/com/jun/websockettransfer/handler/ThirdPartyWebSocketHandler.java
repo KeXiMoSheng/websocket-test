@@ -24,7 +24,7 @@ public class ThirdPartyWebSocketHandler extends AbstractWebSocketHandler {
     @Override
     protected void handleTextMessage(WebSocketSession session, TextMessage message) {
         String payload = message.getPayload();
-        System.out.printf("收到中转服务文本消息：%s%n", payload);
+        System.out.println("收到中转服务文本消息：" + payload);
         // 回复消息（模拟业务处理）
         WebsocketSessionUtil.sendMessage(session, "第三方服务器已接收文本消息：" + payload);
     }
@@ -49,6 +49,6 @@ public class ThirdPartyWebSocketHandler extends AbstractWebSocketHandler {
 
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status) {
-        System.out.printf("中转客户端[%s]断开连接%n", session.getId());
+        System.out.println("中转客户端[" + session.getId() + "]断开连接");
     }
 }
