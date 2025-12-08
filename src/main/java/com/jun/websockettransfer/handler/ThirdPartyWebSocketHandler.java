@@ -51,4 +51,9 @@ public class ThirdPartyWebSocketHandler extends AbstractWebSocketHandler {
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status) {
         System.out.println("中转客户端[" + session.getId() + "]断开连接");
     }
+
+    @Override
+    public void handleTransportError(WebSocketSession session, Throwable exception) throws Exception {
+        System.out.println("中转客户端[" + session.getId() + "]传输错误：" + exception.getMessage());
+    }
 }
